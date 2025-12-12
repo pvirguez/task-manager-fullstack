@@ -9,7 +9,7 @@ function App() {
   const [dueDate, setDueDate] = useState('');
   const [loading, setLoading] = useState(true);
 
-  const API_URL = 'http://localhost:5001/api/tasks';
+  const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5001/api/tasks';
 
   // Fetch tasks from backend
   useEffect(() => {
