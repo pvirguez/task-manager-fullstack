@@ -3,10 +3,13 @@ const cors = require('cors');
 const db = require('./database');
 
 const app = express();
-const PORT = 5000;
+const PORT = process.env.PORT || 5001;
 
 // Middleware
-app.use(cors()); // Allow frontend to connect
+app.use(cors({
+  origin: process.env.FRONTEND_URL || 'http://localhost:3000',
+  credentials: true
+}));
 app.use(express.json()); // Parse JSON request bodies
 
 // GET all tasks
